@@ -10,6 +10,13 @@ App includes Test cases for ViewModel,Repository,UI layer
 Architecture reference: https://developer.android.com/jetpack/docs/guide
 
 
+
+![new1](https://user-images.githubusercontent.com/18057891/54491424-ca81c880-48be-11e9-80eb-348ee4719590.gif)
+
+
+
+
+
 Libraries Used
 
 1.Retrofit2<br />
@@ -24,9 +31,14 @@ Libraries Used
 
 
 
-
 Android studio verson 3.3
 gradle version: 3.3.0
+
+
+
+
+
+
 
 
 
