@@ -1,5 +1,5 @@
 
-The App displays news headlines for three categories Sports,Politics and Technology
+The App displays news headlines for three categories Sports,Politics and Technology and displays details in WebView
 
 The App designed is based on Model-View-ViewModel (MVVM)+Data Binding architecture using Room database + Live data combination
 
@@ -25,7 +25,7 @@ Libraries Used
 
 
 
-Android studio verson 3.3 
+Android studio verson 3.3
 gradle version: 3.3.0
 
 
