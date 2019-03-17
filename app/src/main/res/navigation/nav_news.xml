@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/category_list_fragment">
+
+    <fragment
+        android:id="@+id/category_list_fragment"
+        android:name="in.news.ui.news.NewsHostFragment"
+        android:label="News_Host"
+        tools:layout="@layout/fragment_news_host">
+        <action
+            android:id="@+id/action_category_to_details"
+            app:destination="@id/webview_fragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/webview_fragment"
+        android:name="in.news.ui.details.WebViewFragment"
+        android:label="Web"
+        tools:layout="@layout/webview_fragment">
+        <argument
+            android:name="url"
+            app:argType="string" />
+
+    </fragment>
+
+
+
+</navigation>
