@@ -25,7 +25,7 @@ Libraries Used
 
 
 
-Android studio verson 3.3
+Android studio verson 3.3 
 gradle version: 3.3.0
 
 
