@@ -57,6 +57,7 @@ class NewsViewModel @Inject constructor(
 
     /**
      * Fetches articles for [category] via api using [newsRepository]
+     *
      * @param category
      */
     fun fetchNewsForCategory(category: String) {
@@ -86,7 +87,7 @@ class NewsViewModel @Inject constructor(
 
     /**
      * Re-fetches articles for [category] form api
-     * This functioned is accessed via data binding
+     * This function is accessed via data binding
      */
     override fun onRefresh() {
         fetchNewsForCategory(category)
@@ -118,7 +119,7 @@ class NewsViewModel @Inject constructor(
     }
 
     /**
-     * Cancels coroutine lunched by ViewModel
+     * Cancels coroutine launched by ViewModel
      */
     override fun onCleared() {
         super.onCleared()
