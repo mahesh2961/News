@@ -8,19 +8,19 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import javax.inject.Inject
 
-class NewsApp : Application(),HasActivityInjector
-{
+class NewsApp : Application(), HasActivityInjector {
     @Inject
     lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Activity>
 
     override fun activityInjector(): AndroidInjector<Activity> = dispatchingAndroidInjector
 
     companion object {
-    lateinit var instance: Application
-}
+        lateinit var instance: Application
+    }
+
     override fun onCreate() {
         super.onCreate()
-        instance=this;
+        instance = this;
 
         DaggerAppComponent
                 .builder()
