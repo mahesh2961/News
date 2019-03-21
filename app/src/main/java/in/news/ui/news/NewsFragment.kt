@@ -24,6 +24,7 @@ class NewsFragment : BaseFragment() {
 
     lateinit var binding: FragmentNewsListBinding
 
+
     private val adapter: NewsListAdapter by lazy {
         NewsListAdapter()
     }
@@ -64,6 +65,7 @@ class NewsFragment : BaseFragment() {
      * @param adapter
      */
     private fun setDataObserver(adapter: NewsListAdapter) {
+
         vModel.getNewsForCategory(category = category?.label!!).observe(viewLifecycleOwner, Observer { categories ->
             adapter.submitList(categories)
         })
@@ -78,6 +80,7 @@ class NewsFragment : BaseFragment() {
          * @param category
          */
         fun getInstance(category: Category): NewsFragment {
+
             val fragment = NewsFragment()
             val args = Bundle()
             args.putParcelable(KEY_CATEGORY, category)

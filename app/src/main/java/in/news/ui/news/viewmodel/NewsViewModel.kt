@@ -5,6 +5,8 @@ import `in`.news.data.network.model.base.BaseResult
 import `in`.news.data.repository.NewsRepository
 import `in`.news.ui.base.BaseViewModel
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Transformations
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -24,26 +26,32 @@ class NewsViewModel @Inject constructor(
 
     var viewModelScope = CoroutineScope(Dispatchers.IO + viewModelJob) // Co-routine scope IO thread
 
-    private lateinit var category: String
+    private var category= MutableLiveData<String>()
 
-    lateinit var liveNewsList: LiveData<List<Article>>
+     var liveNewsList: LiveData<List<Article>> = Transformations.switchMap(category)
+     {
+         category -> newsRepository.getNewsForCategory(category)
+     }
 
 
-    /**
-     * Sets LiveData list of articles
-     * Updates data when changes are made to database
-     * @param category
-     */
-    private fun getNews(category: String) {
-        liveNewsList = newsRepository.getNewsForCategory(category)
-    }
+//    /**
+//     * Sets LiveData list of articles
+//     * Updates data when changes are made to database
+//     * @param category
+//     */
+//    private fun getNews(category: String) {
+////        liveNewsList = newsRepository.getNewsForCategory(category)
+//    }
+
+
+
 
     /**
      * @return current Livedata  list of articles
      */
-    private fun getObservableData() = liveNewsList
+    fun getObservableData() = liveNewsList
 
-    fun getNewsForCategory(category: String): LiveData<List<Article>> {
+    fun getNewsForCategory(category: String) :LiveData<List<Article>> {
         init(category)
         fetchCategoriesIfNotAvailable(category)
         return getObservableData()
@@ -51,8 +59,7 @@ class NewsViewModel @Inject constructor(
 
     private fun init(category: String)
     {
-        this.category = category
-        getNews(category)
+        this.category.value=category
     }
 
     /**
@@ -90,7 +97,8 @@ class NewsViewModel @Inject constructor(
      * This function is accessed via data binding
      */
     override fun onRefresh() {
-        fetchNewsForCategory(category)
+        fetchNewsForCategory(category.value!!)
+
     }
 
 
